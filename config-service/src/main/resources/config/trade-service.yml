@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 logging:
   pattern:
@@ -13,8 +13,19 @@ logging:
 security:
   oauth2:
     client:
-      clientId: account-service
+      clientId: trade-service
       clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      accessTokenUri: http://localhost:5000/uaa/oauth/token
       grant-type: client_credentials
       scope: serve
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: mb-trading-trade
+      port: 27017

@@ -4,15 +4,29 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
 
 zuul:
-  prefix: /api
   ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
   routes:
-    trade-service: /trade/**
-    api-gateway: /gateway/**
+    auth-service:
+      path: /uaa/**
+      url: http://localhost:5000
+      stripPrefix: false
+      sensitiveHeaders:
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000

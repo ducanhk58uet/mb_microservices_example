@@ -1,0 +1,7 @@
+---
+applications:
+  - name: auth-service
+    memory: 258M
+    instances: 1
+    host: auth-service
+    path: target/auth-service-v1.0.jar

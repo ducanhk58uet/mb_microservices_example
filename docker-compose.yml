@@ -12,3 +12,14 @@ services:
     depends_on:
         config-service:
           condition: service_healthy
+
+  auth-mongodb:
+    build: mongodb
+    ports:
+      - 25000:27017
+
+  auth-service:
+    build: auth-service
+    depends_on:
+      config-service:
+        condition: service_healthy

@@ -54,6 +54,14 @@
 
     </properties>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+        </profile>
+        <profile>
+            <id>docker</id>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>

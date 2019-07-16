@@ -1,16 +1,18 @@
 server:
   port: 5000
--------------
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
--------------
+      defaultZone: http://discovery-service:8761/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
 spring:
   data:
     mongodb:
       host: auth-mongodb
-      username: user
-      database: mb-trading
+      database: mb-trading-auth
       port: 27017
-
