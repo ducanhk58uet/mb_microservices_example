@@ -1,0 +1,19 @@
+server:
+  port: 8062
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health, turbine.stream
+      base-path: /
+
+#turbine:
+#  aggregator:
+#    cluster-config: APPCLUSTER
+#  app-config: trade-service
+#  instanceUrlSuffix.APPCLUSTER: /hystrix.stream

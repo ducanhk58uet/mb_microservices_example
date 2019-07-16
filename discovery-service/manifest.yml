@@ -1,0 +1,7 @@
+---
+applications:
+  - name: discovery-service
+    memory: 258M
+    instances: 1
+    host: discovery-service
+    path: target/discovery-service-v1.0.jar

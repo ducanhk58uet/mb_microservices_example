@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  config-service:
+    build: config-service
+    ports:
+      - 8888:8888
+
+  discovery-service:
+    build: discovery-service
+    ports:
+      - 8761:8761
+    depends_on:
+        config-service:
+          condition: service_healthy
