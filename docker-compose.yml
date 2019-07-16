@@ -1,5 +1,11 @@
 version: '2.1'
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
   config-service:
     build: config-service
     ports:
@@ -20,6 +26,27 @@ services:
 
   auth-service:
     build: auth-service
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  mongodb:
+    build: mongodb
+    ports:
+      - 26000:27017
+
+  account-service:
+    build: account-service
+    ports:
+      - 6000:6000
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+  hystrix-service:
+    build: hystrix-service
+    ports:
+      - 9000:9000
     depends_on:
       config-service:
         condition: service_healthy

@@ -3,4 +3,10 @@ spring:
     name: hystrix-service
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://config-service:8888
+
+turbine:
+  InstanceMonitor:
+    eventStream:
+      skipLineLogic:
+        enabled: false

@@ -1,7 +1,7 @@
 ---
 applications:
   - name: config-service
-    memory: 258M
+    memory: 128M
     instances: 1
     host: config-service
     path: target/config-service-v1.0.jar

@@ -1,0 +1,7 @@
+---
+applications:
+  - name: account-service
+    memory: 256M
+    instances: 1
+    host: account-service
+    path: target/account-service-v1.0.jar

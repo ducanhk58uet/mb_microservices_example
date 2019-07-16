@@ -1,0 +1,31 @@
+security:
+  oauth2:
+    client:
+      clientId: account-service
+      clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
+      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
+
+spring:
+  data:
+    mongodb:
+      host: mongodb
+      database: md-trading-account
+      port: 27017
+  rabbitmq:
+    host: rabbitmq
+
+server:
+  servlet:
+    context-path: /accounts
+  port: 6000
+
+feign:
+  hystrix:
+    enabled: true
